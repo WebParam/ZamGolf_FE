@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="format-detection" content="telephone=no">
 
-        <title>Contacts &#8211; Golf Club</title>
+        <title>Contact us</title>
 
         <link rel="stylesheet" href="css/woocommerce/woocommerce-layout.css" type="text/css" media="all" />
         <link rel="stylesheet" href="css/woocommerce/woocommerce-smallscreen.css" type="text/css" media="only screen and (max-width: 768px)" />
@@ -25,9 +25,60 @@
 
         <link rel="stylesheet" href="css/core.messages.min.css" type="text/css" media="all" />
         <link rel="stylesheet" href="js/vendor/magnific/magnific-popup.min.css" type="text/css" media="all" />
-
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvivpZTRxbl7MY6aAqhHaDKqK-bp1fnXM&callback=initMap"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvivpZTRxbl7MY6aAqhHaDKqK-bp1fnXM"></script>
         <link rel="icon" href="http://placehold.it/32x32" />
     </head>
+
+    <script>
+        function initMap() {
+            // Extracting map element
+            var mapElement = document.getElementById('sc_googlemap_1');
+    
+            // Get data attributes
+            var zoom = parseInt(mapElement.getAttribute('data-zoom'));
+            var address = mapElement.querySelector('.sc_googlemap_marker').getAttribute('data-address');
+    
+            // Convert address to LatLng using Geocoding
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    var mapOptions = {
+                        zoom: zoom,
+                        center: results[0].geometry.location // Set center to the geocoded location
+                    };
+                    var map = new google.maps.Map(mapElement, mapOptions);
+    
+                    // Create a marker
+                    var marker = new google.maps.Marker({
+                        position: results[0].geometry.location,
+                        map: map,
+                        title: mapElement.querySelector('.sc_googlemap_marker').getAttribute('data-title'),
+                        // Set custom icon
+                        icon: {
+                            url: mapElement.querySelector('.sc_googlemap_marker').getAttribute('data-point'),
+                            scaledSize: new google.maps.Size(100, 100)
+                        }
+                    });
+    
+                    // Add infowindow (popup) to the marker
+                    var infowindow = new google.maps.InfoWindow({
+                        content: mapElement.querySelector('.sc_googlemap_marker').getAttribute('data-description')
+                    });
+                    marker.addListener('click', function () {
+                        infowindow.open(map, marker);
+                    });
+                } else {
+                    console.error('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+    
+        // Initialize the map when the window has finished loading
+        window.onload = function () {
+            initMap();
+        };
+    </script>
 
     <body class="page body_style_wide body_filled article_style_stretch scheme_original top_panel_show top_panel_above sidebar_hide page_side_margins_on">
         <!-- Body Wrap -->
@@ -44,12 +95,12 @@
                                 <div class="contact_logo">
                                     <div class="logo">
                                         <a href="index.html">
-                                            <img src="http://placehold.it/173x120" class="logo_main" alt="">
-                                            <img src="http://placehold.it/173x68" class="logo_fixed" alt="">
+                                            <img src="./images/LOGO.png" class="logo_main" alt="">
+                                            <img src="./images/LOGO.png" style="width: 68px; height: 100px;" class="logo_fixed" alt="">
                                         </a>
                                     </div>
                                 </div>
-                                <!-- /Logo area -->
+                                <!-- Logo area -->
                                 <div class="top_panel_buttons">
                                     <!-- Search -->
                                     <div class="search_wrap search_style_regular search_state_closed top_panel_icon">
@@ -61,73 +112,6 @@
                                         </div>
                                     </div>
                                     <!-- /Search -->
-                                    <!-- Shopping cart -->
-                                    <div class="menu_main_cart top_panel_icon">
-                                        <a href="#" class="top_panel_cart_button" data-items="2">
-                                            <span class="contact_icon icon-shopping-cart-2"></span>
-                                            <span class="contact_label contact_cart_label">Your cart:</span>
-                                        <span class="contact_cart_totals">
-                                            <span class="cart_items">2 Items</span> -
-                                             <span class="cart_summa">&pound;595.98</span>
-                                        </span>
-                                        </a>
-                                        <ul class="widget_area sidebar_cart sidebar">
-                                            <li>
-                                                <div class="widget woocommerce widget_shopping_cart">
-                                                    <div>
-                                                        <div class="widget_shopping_cart_content">
-                                                            <ul class="cart_list product_list_widget">
-                                                                <!-- Product item -->
-                                                                <li class="mini_cart_item">
-                                                                    <a class="remove" title="Remove this item" href="#">×</a>
-                                                                    <a href="shop-product-page.html">
-                                                                        <img alt="product" src="http://placehold.it/50x50">
-                                                                        Callaway 2015 Hyper-Lite 5 Golf Balls - White
-                                                                    </a>
-                                                                <span class="quantity">
-                                                                    1 ×
-                                                                    <span class="woocommerce-Price-amount amount">
-                                                                        <span class="woocommerce-Price-currencySymbol">£</span>
-                                                                        69.99
-                                                                    </span>
-                                                                </span>
-                                                                </li>
-                                                                <!-- /Product item -->
-                                                                <!-- Product item -->
-                                                                <li class="mini_cart_item">
-                                                                    <a class="remove" title="Remove this item" href="#">×</a>
-                                                                    <a href="shop-product-page.html">
-                                                                        <img alt="product" src="http://placehold.it/50x50">
-                                                                        2014 TaylorMade Project (a) Stabd Bag
-                                                                    </a>
-                                                                <span class="quantity">
-                                                                    1 ×
-                                                                    <span class="woocommerce-Price-amount amount">
-                                                                        <span class="woocommerce-Price-currencySymbol">£</span>
-                                                                        525.99
-                                                                    </span>
-                                                                </span>
-                                                                </li>
-                                                                <!-- /Product item -->
-                                                            </ul>
-                                                            <p class="total">
-                                                                <strong>Subtotal:</strong>
-                                                                <span class="woocommerce-Price-amount amount">
-                                                                    <span class="woocommerce-Price-currencySymbol">£</span>
-                                                                    595.98
-                                                                </span>
-                                                            </p>
-                                                            <p class="buttons">
-                                                                <a class="button wc-forward" href="cart.html">View Cart</a>
-                                                                <a class="button checkout wc-forward" href="checkout.html">Checkout</a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- /Shopping cart -->
                                 </div>
                                 <div class="menu_pushy_wrap clearfix">
                                     <a href="#" class="menu_pushy_button icon-three">MENU</a>
@@ -143,116 +127,17 @@
                         <a href="#" class="close-pushy"></a>
                         <ul id="menu_pushy" class="menu_pushy_nav">
                             <!-- Menu Item: Home -->
-                            <li class="menu-item menu-item-has-children">
-                                <a href="#">Home</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item">
-                                        <a href="index.html">Home Page</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="homepage-boxed.html">Home Page Boxed</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="homepage-short.html">Home Page Short</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="homepage-dark.html">Home Page Dark</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="homepage-short-dark.html">Home Page Short Dark</a>
-                                    </li>
-                                </ul>
+                            <li class="menu-item  current-menu-parent ">
+                                <a href="index.html">Home</a>
                             </li>
-                            <!-- /Menu Item: Home -->
-                            <!-- Menu Item: Features -->
-                            <li class="menu-item menu-item-has-children">
-                                <a href="#">Features</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item">
-                                        <a href="typography.html">Typography</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="shortcodes.html">Shortcodes</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- /Menu Item: Features -->
-                            <!-- Menu Item: About -->
-                            <li class="menu-item menu-item-has-children">
-                                <a href="#">About</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item">
-                                        <a href="about-us.html">About Us</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="our-team.html">Our Team</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="membership.html">Membership</a>
-                                    </li>
-                                    <li class="menu-item menu-item-has-children">
-                                        <a href="#">Lessons</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item">
-                                                <a href="lessons-grid.html">Grid</a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="lessons-masonry.html">Masonry</a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="lessons-cobbles.html">Cobbles</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- /Menu Item: About -->
-                            <!-- Menu Item: Events -->
+                           
                             <li  class="menu-item">
-                                <a href="events-calendar.html">Events</a>
+                                <a href="about-us.html">About us</a>
                             </li>
-                            <!-- /Menu Item: Events -->
-                            <!-- Menu Item: News -->
-                            <li class="menu-item menu-item-has-children">
-                                <a href="#">News</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item menu-item-has-children">
-                                        <a href="#">Masonry</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item">
-                                                <a href="blog-masonry-2-columns.html">Masonry (2 columns)</a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="blog-masonry-3-columns.html">Masonry (3 columns)</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item menu-item-has-children">
-                                        <a href="#">Portfolio</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item">
-                                                <a href="blog-portfolio-2-columns.html">Portfolio (2 columns)</a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="blog-portfolio-3-columns.html">Portfolio (3 columns)</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="blog-classic.html">Classic</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="post-formats.html">Post Formats</a>
-                                    </li>
-                                </ul>
+                            <li  class="menu-item ">
+                                <a href="competitions.html">Competitions</a>
                             </li>
-                            <!-- /Menu Item: News -->
-                            <!-- Menu Item: Pro Shop -->
-                            <li class="menu-item">
-                                <a href="shop.html">Pro Shop</a>
-                            </li>
-                            <!-- /Menu Item: Pro Shop -->
-                            <!-- Menu Item: Contacts -->
+                          
                             <li class="menu-item current-menu-item">
                                 <a href="contacts.html">Contacts</a>
                             </li>
@@ -260,8 +145,8 @@
                         </ul>
                         <!-- Booking -->
                         <div class="booking_link">
-                            <a href="booking.html">
-                                Book tee times
+                            <a href="events-calendar.html">
+                                Calendar
                             </a>
                         </div>
                         <!-- /Booking -->
@@ -269,49 +154,23 @@
                         <div class="contact_info">
                             <address class="contact_address">
                                 <span>Adress:</span>
-                                8500 Lorem Street, Chicago, IL, 55030,
+                                106 Gary Player Blvd, Blue Valley Golf Estate, Pretoria, 0147
                             </address>
                             <address class="contact_phones">
                                 <span>Call:</span>
-                                (123) 456-78-90,
+                                +27 64 094 4559
                             </address>
                             <address class="contact_email">
                                 <span>E-mail:</span>
-                                sales@yoursite.com
+                                zedsagolfnetwork@gmail.com
                             </address>
                         </div>
-                        <!-- /Contact Info -->
-                        <!-- Socials -->
-                        <div class="contact_socials">
-                            <div class="sc_socials sc_socials_type_icons sc_socials_shape_square sc_socials_size_tiny">
-                                <div class="sc_socials_item">
-                                    <a href="#" target="_blank" class="social_icons social_twitter">
-                                        <span class="icon-twitter"></span>
-                                    </a>
-                                </div>
-                                <div class="sc_socials_item">
-                                    <a href="#" target="_blank" class="social_icons social_facebook">
-                                        <span class="icon-facebook"></span>
-                                    </a>
-                                </div>
-                                <div class="sc_socials_item">
-                                    <a href="#" target="_blank" class="social_icons social_gplus">
-                                        <span class="icon-gplus"></span>
-                                    </a>
-                                </div>
-                                <div class="sc_socials_item">
-                                    <a href="#" target="_blank" class="social_icons social_linkedin">
-                                        <span class="icon-linkedin"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /Socials -->
+                       
                     </div>
                 </nav>
+                <!-- /Pushy menu -->
                 <!-- Site Overlay -->
                 <div class="site-overlay"></div>
-                <!-- /Pushy menu -->
                 <!-- Header mobile -->
                 <div class="header_mobile ">
                     <div class="content_wrap">
@@ -319,77 +178,10 @@
                         <!-- Logo area -->
                         <div class="logo">
                             <a href="index.html">
-                                <img src="http://placehold.it/173x120" class="logo_main" alt="">
+                                <img src="./images/LOGO.png" class="logo_main" alt="">
                             </a>
                         </div>
                         <!-- /Logo area -->
-                        <!-- Shopping area -->
-                        <div class="menu_main_cart top_panel_icon">
-                            <a href="#" class="top_panel_cart_button" data-items="2" data-summa="&pound;595.98">
-                                <span class="contact_icon icon-shopping-cart-2"></span>
-                                <span class="contact_label contact_cart_label">Your cart:</span>
-                            <span class="contact_cart_totals">
-                                <span class="cart_items">2 Items</span> -
-                                <span class="cart_summa">&pound;595.98</span>
-                            </span>
-                            </a>
-                            <ul class="widget_area sidebar_cart sidebar">
-                                <li>
-                                    <div class="widget woocommerce widget_shopping_cart">
-                                        <div>
-                                            <div class="widget_shopping_cart_content">
-                                                <ul class="cart_list product_list_widget">
-                                                    <!-- Product item -->
-                                                    <li class="mini_cart_item">
-                                                        <a class="remove" title="Remove this item" href="#">×</a>
-                                                        <a href="shop-product-page.html">
-                                                            <img alt="product" src="http://placehold.it/50x50">
-                                                            Callaway 2015 Hyper-Lite 5 Golf Balls - White
-                                                        </a>
-                                                        <span class="quantity">
-                                                            1 ×
-                                                            <span class="woocommerce-Price-amount amount">
-                                                                <span class="woocommerce-Price-currencySymbol">£</span>
-                                                                69.99
-                                                            </span>
-                                                        </span>
-                                                    </li>
-                                                    <!-- /Product item -->
-                                                    <!-- Product item -->
-                                                    <li class="mini_cart_item">
-                                                        <a class="remove" title="Remove this item" href="#">×</a>
-                                                        <a href="shop-product-page.html">
-                                                            <img alt="product" src="http://placehold.it/50x50">
-                                                            2014 TaylorMade Project (a) Stabd Bag
-                                                        </a>
-                                                    <span class="quantity">
-                                                        1 ×
-                                                        <span class="woocommerce-Price-amount amount">
-                                                            <span class="woocommerce-Price-currencySymbol">£</span>
-                                                            525.99
-                                                        </span>
-                                                    </span>
-                                                    </li>
-                                                    <!-- /Product item -->
-                                                </ul>
-                                                <p class="total">
-                                                    <strong>Subtotal:</strong>
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <span class="woocommerce-Price-currencySymbol">£</span>
-                                                    595.98
-                                                </span>
-                                                </p>
-                                                <p class="buttons">
-                                                    <a class="button wc-forward" href="cart.html">View Cart</a>
-                                                    <a class="button checkout wc-forward" href="checkout.html">Checkout</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /Shopping area -->
                     </div>
                     <!-- Side Wrap -->
                     <div class="side_wrap">
@@ -398,140 +190,46 @@
                             <nav class="menu_main_nav_area">
                                 <ul id="menu_main_mobile" class="menu_main_nav">
                                     <!-- Menu Item: Home -->
-                                    <li class="menu-item menu-item-has-children">
-                                        <a href="#">Home</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item">
-                                                <a href="index.html">Home Page</a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="homepage-boxed.html">Home Page Boxed</a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="homepage-short.html">Home Page Short</a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="homepage-dark.html">Home Page Dark</a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="homepage-short-dark.html">Home Page Short Dark</a>
-                                            </li>
-                                        </ul>
+                                    <li class="menu-item ">
+                                        <a href="index.html">Home</a>
                                     </li>
                                     <!-- /Menu Item: Home -->
-                                    <!-- Menu Item: Features -->
-                                    <li class="menu-item menu-item-has-children">
-                                        <a href="#">Features</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item">
-                                                <a href="typography.html">Typography</a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="shortcodes.html">Shortcodes</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <!-- /Menu Item: Features -->
                                     <!-- Menu Item: About -->
-                                    <li class="menu-item menu-item-has-children">
-                                        <a href="#">About</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item">
-                                                <a href="about-us.html">About Us</a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="our-team.html">Our Team</a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="membership.html">Membership</a>
-                                            </li>
-                                            <li class="menu-item menu-item-has-children">
-                                                <a href="#">Lessons</a>
-                                                <ul class="sub-menu">
-                                                    <li class="menu-item">
-                                                        <a href="lessons-grid.html">Grid</a>
-                                                    </li>
-                                                    <li class="menu-item">
-                                                        <a href="lessons-masonry.html">Masonry</a>
-                                                    </li>
-                                                    <li class="menu-item">
-                                                        <a href="lessons-cobbles.html">Cobbles</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                    <li class="menu-item ">
+                                        <a id="openPopup" href="about-us.html">About</a>
+                                       
                                     </li>
-                                    <!-- /Menu Item: About -->
-                                    <!-- Menu Item: Events -->
+                                   
                                     <li class="menu-item">
-                                        <a href="events-calendar.html">Events</a>
+                                        <a href="competitions.html">Competitions</a>
                                     </li>
-                                    <!-- /Menu Item: Events -->
-                                    <!-- Menu Item: News -->
-                                    <li class="menu-item menu-item-has-children">
-                                        <a href="#">News</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item menu-item-has-children">
-                                                <a href="#">Masonry</a>
-                                                <ul class="sub-menu">
-                                                    <li class="menu-item">
-                                                        <a href="blog-masonry-2-columns.html">Masonry (2 columns)</a>
-                                                    </li>
-                                                    <li class="menu-item">
-                                                        <a href="blog-masonry-3-columns.html">Masonry (3 columns)</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu-item menu-item-has-children">
-                                                <a href="#">Portfolio</a>
-                                                <ul class="sub-menu">
-                                                    <li class="menu-item">
-                                                        <a href="blog-portfolio-2-columns.html">Portfolio (2 columns)</a>
-                                                    </li>
-                                                    <li class="menu-item">
-                                                        <a href="blog-portfolio-3-columns.html">Portfolio (3 columns)</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="blog-classic.html">Classic</a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="post-formats.html">Post Formats</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <!-- /Menu Item: News -->
-                                    <!-- Menu Item: Pro Shop -->
                                     <li class="menu-item">
-                                        <a href="shop.html">Pro Shop</a>
+                                        <a href="events-calendar.html">Calendar</a>
                                     </li>
-                                    <!-- /Menu Item: Pro Shop -->
-                                    <!-- Menu Item: Contacts -->
-                                    <li class="menu-item current-menu-item">
-                                        <a href="contacts.html">Contacts</a>
+                                    <li class="menu-item current-menu-ancestor current-menu-parent">
+                                        <a href="contacts.html">Contact</a>
                                     </li>
                                     <!-- /Menu Item: Contacts -->
                                 </ul>
                             </nav>
                             <!-- Search -->
-                            <div class="search_wrap search_style_regular search_state_fixed">
+                            <!-- <div class="search_wrap search_style_regular search_state_fixed">
                                 <div class="search_form_wrap">
                                     <form method="get" class="search_form" action="#">
                                         <input type="text" class="search_field" placeholder="Search" value="" name="s" />
                                         <button type="submit" class="search_submit icon-magnifying-glass-browser" title="Start search"></button>
                                     </form>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- /Search -->
-                            <div class="login">
+                            <!-- <div class="login">
                                 <a href="#popup_login" class="popup_link popup_login_link icon-user ">Login</a>
-                            </div>
+                            </div> -->
                             <!-- Contact info -->
                             <div class="panel_middle">
                                 <div class="contact_field contact_address">
                                     <span class="contact_icon icon-home"></span>
-                                    <span class="contact_label contact_address_1">8500 Lorem Street, Chicago, IL, 55030</span>
+                                    <span class="contact_label contact_address_1">106 Gary Player Blvd, Blue Valley Golf Estate, Pretoria, 0147</span>
                                     <span class="contact_address_2"></span>
                                 </div>
                                 <div class="contact_field contact_phone">
@@ -540,42 +238,7 @@
                                     <span class="contact_email">sales@yoursite.com</span>
                                 </div>
                             </div>
-                            <!-- /Contact info -->
-                            <!-- Booking -->
-                            <div class="booking_link">
-                                <a href="booking.html">
-                                    Book tee times
-                                </a>
-                            </div>
-                            <!-- /Booking -->
-                            <!-- Socials -->
-                            <div class="panel_bottom">
-                                <div class="contact_socials">
-                                    <div class="sc_socials sc_socials_type_icons sc_socials_shape_square sc_socials_size_tiny">
-                                        <div class="sc_socials_item">
-                                            <a href="#" target="_blank" class="social_icons social_twitter">
-                                                <span class="icon-twitter"></span>
-                                            </a>
-                                        </div>
-                                        <div class="sc_socials_item">
-                                            <a href="#" target="_blank" class="social_icons social_facebook">
-                                                <span class="icon-facebook"></span>
-                                            </a>
-                                        </div>
-                                        <div class="sc_socials_item">
-                                            <a href="#" target="_blank" class="social_icons social_gplus">
-                                                <span class="icon-gplus"></span>
-                                            </a>
-                                        </div>
-                                        <div class="sc_socials_item">
-                                            <a href="#" target="_blank" class="social_icons social_linkedin">
-                                                <span class="icon-linkedin"></span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /Socials -->
+                           
                         </div>
                     </div>
                     <!-- /Side Wrap -->
@@ -616,8 +279,8 @@
                                                                     <span class="sc_icon icon-back"></span>
                                                                     <div class="sc_services_item_content">
                                                                         <div class="sc_services_item_description">
-                                                                            <p><a href="#">info@yoursite.com</a></p>
-                                                                            <p><a href="#">www.yoursite.com</a></p>
+                                                                            <p><a href="#">zedsagolfnetwork@gmail.com</a></p>
+                                                                            <p><a href="#">www.zedsa.co.za</a></p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -626,8 +289,8 @@
                                                                     <span class="sc_icon icon-smartphone"></span>
                                                                     <div class="sc_services_item_content">
                                                                         <div class="sc_services_item_description">
-                                                                            <p>+1(800)123-4567</p>
-                                                                            <p>+1(800)123-4566</p>
+                                                                            <p>+27 64 094 4559</p>
+                                                                            <!-- <p>+1(800)123-4566</p> -->
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -636,8 +299,8 @@
                                                                     <span class="sc_icon icon-home-1"></span>
                                                                     <div class="sc_services_item_content">
                                                                         <div class="sc_services_item_description">
-                                                                            <p>176 W street name,</p>
-                                                                            <p> New York, NY 10014</p>
+                                                                            <p>106 Gary Player Blvd, Blue Valley Golf Estate</p>
+                                                                            <p>Pretoria, 0147</p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -659,7 +322,7 @@
                                                 <div id="sc_form_2_wrap" class="sc_form_wrap">
                                                     <div id="sc_form_2" class="sc_form sc_form_style_form_1 aligncenter contact_form_custom_1">
                                                         <h2 class="sc_form_title sc_item_title">Contact Us</h2>
-                                                        <div class="sc_form_descr sc_item_descr">We are very excited to go over this exceptional tournament that literally left the players and the crowd breathless!</div>
+                                                        <div class="sc_form_descr sc_item_descr">We are excited to hear from you, please leave us a message below!</div>
                                                         <form id="sc_form_2_form" data-formtype="form_1" method="post" action="include/sendmail.php">
                                                             <div class="sc_form_info">
                                                                 <div class="sc_form_item sc_form_field label_over">
@@ -694,13 +357,19 @@
                                 <!-- Google Map section -->
                                 <div class="sc_section">
                                     <div class="sc_section_inner">
-                                        <div class="sc_section_content_wrap">
-                                            <div id="sc_googlemap_2" class="sc_googlemap width_100_per height_400" data-zoom="10" data-style="custom">
-                                                <div id="sc_googlemap_2_1" class="sc_googlemap_marker" data-title="U.S. Bank" data-description="Mauston" data-address="Mauston" data-latlng="" data-point="http://placehold.it/100x100"></div>
+                                        <div class="mapouter" style="position: relative; text-align: right; width: 100%;">
+                                            <div class="gmap_canvas" style="overflow: hidden; background: none !important; width: 100%;">
+                                                <iframe  width="100%" height="15%" id="gmap_canvas" src="https://maps.google.com/maps?q=5611+Gary+Player+Blvd%2C++Pretoria%2CSouth+Africa%2C+0147&t=k&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                                              
+                                                <style>.gmap_canvas { overflow: hidden; background: none !important; width: 100%; height: 50%; }</style>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+                               
+
+                                
                                 <!-- /Google Map section -->
                             </section>
                         </article>
@@ -718,12 +387,16 @@
                                 <aside class="column-1_4 widget widget_socials">
                                     <div class="widget_inner">
                                         <div class="logo">
-                                            <a href="index.html">
+                                            <!-- <a href="index.html">
                                                 <img src="http://placehold.it/248x48" class="logo_main" alt="">
-                                            </a>
+                                            </a> -->
                                         </div>
-                                        <div class="logo_descr">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</div>
-                                        <div class="sc_socials sc_socials_type_icons sc_socials_shape_square sc_socials_size_tiny">
+                                        <div class="logo_descr">
+
+                                            At Zedsa Golf Club, we take pride in providing an exceptional golfing atmosphere, 
+                                            blending the love for the sport with top-notch amenities. 
+                                        </div>
+                                        <!-- <div class="sc_socials sc_socials_type_icons sc_socials_shape_square sc_socials_size_tiny">
                                             <div class="sc_socials_item">
                                                 <a href="#" target="_blank" class="social_icons social_twitter">
                                                     <span class="icon-twitter"></span>
@@ -744,10 +417,10 @@
                                                     <span class="icon-linkedin"></span>
                                                 </a>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </aside><!-- /Widget: Socials --><!-- Widget: Recent Posts --><aside class="column-1_4 widget widget_recent_entries">
-                                <h5 class="widget_title">Latest News</h5>
+                                <!-- <h5 class="widget_title">Latest News</h5>
                                 <ul>
                                     <li>
                                         <a href="post-single.html">Ways To Improve Your Short Game</a>
@@ -758,22 +431,22 @@
                                     <li>
                                         <a href="post-single.html">Tips for improving your serve</a>
                                     </li>
-                                </ul>
+                                </ul> -->
                             </aside><!-- /Widget: Recent Posts --><!-- Widget: Text --><aside class="column-1_4 widget widget_text">
                                 <h5 class="widget_title">Contact Us</h5>
                                 <div class="textwidget">
                                     <p>Address
-                                        <span class="display_block">8500 Lorem Street, Chicago, IL, 55030</span>
+                                        <span class="display_block">106 Gary Player Blvd, Blue Valley Golf Estate, Pretoria, 0147</span>
                                     </p>
                                     <p>Call Us
-                                        <span class="display_block">(123) 456-78-90</span>
+                                        <span class="display_block">+27 64 094 4559</span>
                                     </p>
                                     <p>Email
-                                        <span class="display_block">sales@yoursite.com</span>
+                                        <span class="display_block">zedsagolfnetwork@gmail.com</span>
                                     </p>
                                 </div>
                             </aside><!-- /Widget: Text --><!-- Widget: Flickr --><aside class="column-1_4 widget widget_flickr">
-                                <h5 class="widget_title">Latest Portfolio</h5>
+                                <!-- <h5 class="widget_title">Latest Portfolio</h5>
                                 <div class="flickr_images">
                                     <div class="flickr_badge_image">
                                         <a href="#">
@@ -805,7 +478,7 @@
                                             <img title="" alt="A photo on Flickr" src="http://placehold.it/75x75">
                                         </a>
                                     </div>
-                                </div>
+                                </div> -->
                             </aside>
                                 <!-- /Widget: Flickr -->
                             </div>
