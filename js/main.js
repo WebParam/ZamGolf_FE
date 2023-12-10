@@ -51,5 +51,5 @@
 /* Lessons masonry isotope buttons */
     jQuery(document).ready(function() {
         "use strict";
-        jQuery("#sc_blogger_3 .isotope_filters").append("<a href=\"#\" data-filter=\"*\" class=\"theme_button active\">All</a><a href=\"#\" data-filter=\".flt_107\" class=\"theme_button\">Coaching &amp; Tips</a><a href=\"#\" data-filter=\".flt_108\" class=\"theme_button\">Full Swing</a><a href=\"#\" data-filter=\".flt_25\" class=\"theme_button\">technics</a><a href=\"#\" data-filter=\".flt_86\" class=\"theme_button\">competition</a>");
+        jQuery("#sc_blogger_3 .isotope_filters").append("<a href=\"#\" data-filter=\"*\" class=\"theme_button active\">All</a><a href=\"#\" data-filter=\".flt_107\" class=\"theme_button\">Majors</a><a href=\"#\" data-filter=\".flt_25\" class=\"theme_button\">Knockouts</a><a href=\"#\" data-filter=\".flt_86\" class=\"theme_button\">Tours</a>");
     });
