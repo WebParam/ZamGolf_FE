@@ -10,6 +10,7 @@
 
         <link rel="stylesheet" href="js/vendor/revslider/css/settings.css" type="text/css" media="all" />
         <link rel="stylesheet" href="css/rev-slider.min.css" type="text/css" media="all" />
+        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 
         <link rel="stylesheet" href="css/woocommerce/woocommerce-layout.css" type="text/css" media="all" />
         <link rel="stylesheet" href="css/woocommerce/woocommerce-smallscreen.css" type="text/css" media="only screen and (max-width: 768px)" />
@@ -301,7 +302,7 @@
                                                             <!-- Services item -->
                                                             <div class="column-1_5 column_padding_bottom">
                                                                 <div class="sc_services_item odd first">
-                                                                  <img width="100px" height="100px"  src="./images/golf.svg">
+                                                                  <img class="home-icon" src="./images/golf.svg">
                                                                     <div class="sc_services_item_content">
                                                                         <h4 class="sc_services_item_title">Tours</h4>
                                                                         <div class="sc_services_item_description">
@@ -310,7 +311,7 @@
                                                                 </div>
                                                             </div><!-- /Services item --><!-- Services item --><div class="column-1_5 column_padding_bottom">
                                                                 <div class="sc_services_item even">
-                                                                    <img width="100px" height="100px"  src="./images/trophy.svg">
+                                                                    <img class="home-icon"  src="./images/trophy.svg">
                                                                     <div class="sc_services_item_content">
                                                                         <h4 class="sc_services_item_title">Majors</h4>
                                                                         <div class="sc_services_item_description">
@@ -319,7 +320,7 @@
                                                                 </div>
                                                             </div><!-- /Services item --><!-- Services item --><div class="column-1_5 column_padding_bottom">
                                                                 <div class="sc_services_item odd">
-                                                                    <img width="100px" height="100px"  src="./images/boxing.svg">
+                                                                    <img src="./images/boxing.svg">
                                                                     <div class="sc_services_item_content">
                                                                         <h4 class="sc_services_item_title">Knockouts</h4>
                                                                         <div class="sc_services_item_description">
@@ -328,7 +329,7 @@
                                                                 </div>
                                                             </div><!-- /Services item --><!-- Services item --><div class="column-1_5 column_padding_bottom">
                                                                 <div class="sc_services_item even">
-                                                                    <img width="100px" height="100px"  src="./images/podium.svg">
+                                                                    <img src="./images/podium.svg">
                                                                     <div class="sc_services_item_content">
                                                                         <h4 class="sc_services_item_title">Results</h4>
                                                                         <div class="sc_services_item_description">
@@ -337,7 +338,7 @@
                                                                 </div>
                                                             </div><!-- /Services item --><!-- Services item --><div class="column-1_5 column_padding_bottom">
                                                                 <div class="sc_services_item odd">
-                                                                    <img width="100px" height="100px"  src="./images/leadership.svg">
+                                                                    <img src="./images/leadership.svg">
                                                                     <div class="sc_services_item_content">
                                                                         <h4 class="sc_services_item_title">Leadership</h4>
                                                                         <div class="sc_services_item_description">
@@ -1086,76 +1087,83 @@
                                 </div>
                                 <!-- /Team section -->
                                 <!-- Map section -->
-                                <div class="sc_section" style="height: 75vh;">
-                                    <div class="sc_section_inner" >
-                                        <div class="sc_section_content_wrap" >
-                                            <div id="sc_googlemap_1_wrap" class="sc_googlemap_wrap" >
-                                                <!-- <div id="sc_googlemap_1" class="sc_googlemap width_100_per height_590" data-zoom="10" data-style="custom">
-                                                    <div id="sc_googlemap_1_1" class="sc_googlemap_marker" data-title="U.S. Bank" data-description="&lt;p&gt;&lt;strong&gt;U.S. Bank&lt;/strong&gt;&lt;br /&gt;A reliable bank with ancient traditions and friendly staff&lt;/p&gt;" data-address="5611 Gary Player Blvd,  Pretoria,  0147" data-latlng="" data-point="http://placehold.it/100x100">
-                                                    </div>                                                                                                                                                                                                                                          
-                                                </div> -->
+                                
 
-                                             
-
-                                                <div class="mapouter" style="position: relative; text-align: right; width: 100%;height: 150vh;">
-                                                    <div class="gmap_canvas" style="overflow: hidden; background: none !important; width: 100%;">
-                                                        <iframe  width="100%" height="25%" id="gmap_canvas" src="https://maps.google.com/maps?q=5611+Gary+Player+Blvd%2C++Pretoria%2CSouth+Africa%2C+0147&t=k&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                                                        <br>
-                                                        
-                                                        <br>
-                                                        <style>.gmap_canvas { overflow: hidden; background: none !important; width: 100%; height: 50%; }</style>
-                                                    </div>
-                                                </div>
-                                                
-                                                
-                                                
-
-                                               
-                                                
-                                                
-                                                <!-- Contact form -->
-                                                <div class="sc_googlemap_content formmap" style="height: 80vh;">
-                                                    <div id="sc_form_1_wrap" class="sc_form_wrap">
-                                                        <div id="sc_form_1" class="sc_form sc_form_style_form_1">
-                                                            <h2 class="sc_form_title sc_item_title">Contact Us</h2>
-                                                            <div class="sc_form_descr sc_item_descr">Please fill out the form
-                                                                <br /> and we will get back to you</div>
-                                                            <form id="sc_form_1_form" data-formtype="form_1" method="post" action="https://formspree.io/f/mnqwnlqz">
-                                                                <div class="sc_form_info">
-                                                                    <div class="sc_form_item sc_form_field label_over">
-                                                                        <label class="required" for="sc_form_username">Name</label>
-                                                                        <input id="sc_form_username" type="text" name="username" placeholder="Name *">
-                                                                    </div>
-                                                                    <div class="sc_form_item sc_form_field label_over">
-                                                                        <label class="required" for="sc_form_email">E-mail</label>
-                                                                        <input id="sc_form_email" type="text" name="email" placeholder="E-mail *">
-                                                                    </div>
-                                                                    <div class="sc_form_item sc_form_field label_over">
-                                                                        <label class="required" for="sc_form_subj">Subject</label>
-                                                                        <input id="sc_form_subj" type="text" name="subject" placeholder="Subject">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="sc_form_item sc_form_message label_over">
-                                                                    <label class="required" for="sc_form_message">Message</label>
-                                                                    <textarea id="sc_form_message" name="message" placeholder="Message"></textarea>
-                                                                </div>
-                                                                <div class="sc_form_item sc_form_button">
-                                                                    <button>Send Message</button>
-                                                                </div>
-                                                                <div class="result sc_infobox"></div>
-                                                            </form>
+                                <div style=" height: 100vh;">
+                                    <div class="sc_section" style="height: 75vh;">
+                                        <div class="sc_section_inner" >
+                                            <div class="sc_section_content_wrap" >
+                                                <div id="sc_googlemap_1_wrap" class="sc_googlemap_wrap" >
+                                                    <!-- <div id="sc_googlemap_1" class="sc_googlemap width_100_per height_590" data-zoom="10" data-style="custom">
+                                                        <div id="sc_googlemap_1_1" class="sc_googlemap_marker" data-title="U.S. Bank" data-description="&lt;p&gt;&lt;strong&gt;U.S. Bank&lt;/strong&gt;&lt;br /&gt;A reliable bank with ancient traditions and friendly staff&lt;/p&gt;" data-address="5611 Gary Player Blvd,  Pretoria,  0147" data-latlng="" data-point="http://placehold.it/100x100">
+                                                        </div>                                                                                                                                                                                                                                          
+                                                    </div> -->
+    
+                                                 
+    
+                                                    <div class="mapouter" style="position: relative; text-align: right; width: 100%;height: 150vh;">
+                                                        <div class="gmap_canvas" style="overflow: hidden; background: none !important; width: 100%;">
+                                                            <iframe  width="100%" height="25%" id="gmap_canvas" src="https://maps.google.com/maps?q=5611+Gary+Player+Blvd%2C++Pretoria%2CSouth+Africa%2C+0147&t=k&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                                                            <br>
+                                                            
+                                                            <br>
+                                                            <style>.gmap_canvas { overflow: hidden; background: none !important; width: 100%; height: 50%; }</style>
                                                         </div>
                                                     </div>
+                                                    
+                                                    
+                                                    
+                                                    <!-- Contact form -->
+                                                    <div class="sc_googlemap_content formmap" style="height: 90vh;">
+                                                        <div id="sc_form_1_wrap" class="sc_form_wrap">
+                                                            <div id="sc_form_1" class="sc_form sc_form_style_form_1">
+                                                                <h2 class="sc_form_title sc_item_title">Contact Us</h2>
+                                                                <div class="sc_form_descr sc_item_descr">Please fill out the form
+                                                                    <br /> and we will get back to you</div>
+                                                                <form id="sc_form_1_form" data-formtype="form_1" method="post" action="https://formspree.io/f/mnqwnlqz">
+                                                                    <div class="sc_form_info">
+                                                                        <div class="sc_form_item sc_form_field label_over">
+                                                                            <label class="required" for="sc_form_username">Name</label>
+                                                                            <input id="sc_form_username" type="text" name="username" placeholder="Name *">
+                                                                        </div>
+                                                                        <div class="sc_form_item sc_form_field label_over">
+                                                                            <label class="required" for="sc_form_email">E-mail</label>
+                                                                            <input id="sc_form_email" type="text" name="email" placeholder="E-mail *">
+                                                                        </div>
+                                                                        <div class="sc_form_item sc_form_field label_over">
+                                                                            <label class="required" for="sc_form_subj">Subject</label>
+                                                                            <input id="sc_form_subj" type="text" name="subject" placeholder="Subject">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="sc_form_item sc_form_message label_over">
+                                                                        <label class="required" for="sc_form_message">Message</label>
+                                                                        <textarea id="sc_form_message" name="message" placeholder="Message"></textarea>
+                                                                    </div>
+                                                                    <div class="sc_form_item sc_form_button">
+                                                                        <button>Send Message</button>
+                                                                    </div>
+                                                                    <div class="result sc_infobox"></div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /Contact form -->
                                                 </div>
-                                                <!-- /Contact form -->
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                                 <!-- /Map section -->
                             </section>
                         </article>
                     </div>
+                    
+    
+
+                   
+  
+  
                     <!-- /Content -->
                 </div>
                 <!-- /Page Content Wrap -->
@@ -1291,6 +1299,8 @@
         
 
         <style>
+
+           
 
             .formmap{
                 display: block;
@@ -1472,7 +1482,7 @@ window.onclick = function(event) {
         <script type="text/javascript" src="js/core.googlemap.min.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvivpZTRxbl7MY6aAqhHaDKqK-bp1fnXM&callback=initMap"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvivpZTRxbl7MY6aAqhHaDKqK-bp1fnXM"></script>
-
+        
 
     </body>
 
